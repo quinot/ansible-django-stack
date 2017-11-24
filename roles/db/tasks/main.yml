@@ -41,6 +41,10 @@
                    password={{ db_password }}
                    priv=ALL
                    state=present
+                   encrypted=yes
+  # ansible/ansible#25823: for Postgres 10, unencrypted
+  # passwords are no longer supported, so the default
+  # encrypted=no will fail.
 
 - name: Ensure user does not have unnecessary privileges
   become: yes
